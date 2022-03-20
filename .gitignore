@@ -35,8 +35,7 @@ build/
 ### VS Code ###
 .vscode/
 
-src/main/resources/flyway.properties
-application.properties
+
 #database file
 *.db
 #log file
