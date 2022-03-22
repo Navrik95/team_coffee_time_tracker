@@ -1,7 +1,8 @@
 package teamcoffee.routerservice.handlers;
 
-import handlers.interfaces.LectorCommands;
+
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import teamcoffee.routerservice.handlers.interfaces.LectorCommands;
 
 
 public class LectorMessageSender implements LectorCommands {
