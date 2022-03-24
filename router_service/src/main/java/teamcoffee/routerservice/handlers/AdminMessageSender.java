@@ -3,8 +3,11 @@ package teamcoffee.routerservice.handlers;
 
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import teamcoffee.routerservice.handlers.interfaces.AdminCommands;
+import teamcoffee.routerservice.handlers.interfaces.DefaultCommands;
+import teamcoffee.routerservice.handlers.interfaces.GroupViewCommands;
+import teamcoffee.routerservice.handlers.interfaces.ProfileCommands;
 
-public class AdminMessageSender implements AdminCommands {
+public class AdminMessageSender implements AdminCommands , DefaultCommands, GroupViewCommands, ProfileCommands {
     @Override
     public SendMessage startMessage(Long chat_id, String message) {
         String text = "Привет! я буду помогать тебе админить:) Вот что я умею:\n" +

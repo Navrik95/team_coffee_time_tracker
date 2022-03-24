@@ -4,18 +4,6 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
 public interface AdminCommands {
 
-    /** Отправка сообщения о начале работы с ботом */
-    SendMessage startMessage(Long chat_id, String message);
-
-    /** Просмотр профиля Admin */
-    SendMessage viewUserProfile(Long chat_id, String message);
-
-    /** Редактирование имени Admin */
-    SendMessage editUserName(Long chat_id, String message);
-
-    /** Редактирование фамилии Admin */
-    SendMessage editUserSurName(Long chat_id, String message);
-
     /** Добавление сотрудника */
     SendMessage createUser(Long chat_id, String message);
 
@@ -45,16 +33,5 @@ public interface AdminCommands {
 
     /** Удаление правила отправки отчётов */
     SendMessage deleteSettingsReport(Long chat_id, String message);
-
-    /** Получение списка всех учеников и в какой они группе */
-    SendMessage getAllUsersWithGroupName(Long chat_id, String message);
-
-    /** Получение списка всех групп */
-    SendMessage getAllGroups(Long chat_id, String message);
-
-    /** Получение списка учеников группы */
-    SendMessage getGroupUsers(Long chat_id, String message);
-
-    /** Получение списка всех команд */
-    SendMessage helpCommand(Long chat_id, String message);
+    
 }

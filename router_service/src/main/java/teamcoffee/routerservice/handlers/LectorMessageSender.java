@@ -2,10 +2,11 @@ package teamcoffee.routerservice.handlers;
 
 
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import teamcoffee.routerservice.handlers.interfaces.LectorCommands;
+import teamcoffee.routerservice.handlers.interfaces.DefaultCommands;
+import teamcoffee.routerservice.handlers.interfaces.GroupViewCommands;
 
 
-public class LectorMessageSender implements LectorCommands {
+public class LectorMessageSender implements DefaultCommands, GroupViewCommands {
 
 
     @Override

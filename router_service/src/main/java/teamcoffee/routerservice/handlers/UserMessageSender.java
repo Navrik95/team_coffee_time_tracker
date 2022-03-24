@@ -1,19 +1,31 @@
 package teamcoffee.routerservice.handlers;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import teamcoffee.routerservice.handlers.interfaces.UserCommands;
+import teamcoffee.routerservice.handlers.interfaces.ControllerResponse;
+import teamcoffee.routerservice.handlers.interfaces.DefaultCommands;
+import teamcoffee.routerservice.handlers.interfaces.ProfileCommands;
+import teamcoffee.routerservice.handlers.interfaces.TrackingCommands;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class UserMessageSender implements UserCommands {
+@Controller
+public class UserMessageSender implements DefaultCommands, ProfileCommands, TrackingCommands {
+    private ControllerResponse controllerResponse;
+
+    @Autowired
+    public void setControllerResponse(ControllerResponse controllerResponse) {
+        this.controllerResponse = controllerResponse;
+    }
 
     private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     @Override
     public SendMessage startMessage(Long chat_id, String message) {
-        String text = "Привет! Я тебе буду помогать с трекингом! Вот что я умею:\n" +
+        /*String text = "Привет! Я тебе буду помогать с трекингом! Вот что я умею:\n" +
                 "/viewprofile - покажу информацию о твоём профиле\n" +
                 "/editusername - отредактировать имя\n" +
                 "/editusersurname - отредактировать фамилию\n" +
@@ -21,7 +33,8 @@ public class UserMessageSender implements UserCommands {
                 "/taskname - получить имя задачи с которой работаешь\n" +
                 "/stoptracking - стоп трекинга по задаче\n" +
                 "/help - напомню свои команды!\n" +
-                "Буду рад помогать тебе!";
+                "Буду рад помогать тебе!";*/
+        String text = controllerResponse.response();
         return SendMessage.builder().chatId(chat_id.toString()).text(text).build();
     }
 
