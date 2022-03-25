@@ -27,12 +27,15 @@ public class User {
     @JoinColumn(name="u_roles_id")
     private Role role;
 
-    public User(long chatId, String nickname, String name, String surname, Team team, Role role) {
+    private UserState userState;
+
+    public User(long chatId, String nickname, String name, String surname, Team team, Role role,UserState userState) {
         this.nickname = nickname;
         this.name = name;
         this.surname = surname;
         this.team = team;
         this.role = role;
+        userState = UserState.DEFAULT_STATE;
     }
 
     public User() {
