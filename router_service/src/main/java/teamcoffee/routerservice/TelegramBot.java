@@ -8,8 +8,8 @@ import teamcoffee.routerservice.handlers.MessageHandler;
 
 public class TelegramBot extends TelegramLongPollingBot {
     MessageHandler messageHandler = new MessageHandler();
-    private final String botName = "andersen_project_test_time_bot";
-    private final String botToken = "5168333482:AAFmwhhCKGdvNVbSv7alIkvdQoKr6aeb0ss";
+    private final String botName = "";
+    private final String botToken = "";
 
     @Override
     public String getBotUsername() {
