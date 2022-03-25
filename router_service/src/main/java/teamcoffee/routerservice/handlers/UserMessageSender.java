@@ -1,13 +1,23 @@
 package teamcoffee.routerservice.handlers;
 
 
+import com.netflix.appinfo.InstanceInfo;
+import com.netflix.discovery.EurekaClient;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import teamcoffee.routerservice.handlers.interfaces.UserCommands;
+import teamcoffee.routerservice.handlers.interfaces.DefaultCommands;
+import teamcoffee.routerservice.handlers.interfaces.ProfileCommands;
+import teamcoffee.routerservice.handlers.interfaces.TrackingCommands;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class UserMessageSender implements UserCommands {
+@RestController
+public class UserMessageSender implements DefaultCommands, ProfileCommands, TrackingCommands {
 
     private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 

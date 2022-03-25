@@ -2,12 +2,15 @@ package teamcoffee.routerservice.handlers;
 
 
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
-import teamcoffee.routerservice.handlers.interfaces.TeamLeadCommands;
+import teamcoffee.routerservice.handlers.interfaces.DefaultCommands;
+import teamcoffee.routerservice.handlers.interfaces.GroupViewCommands;
+import teamcoffee.routerservice.handlers.interfaces.ProfileCommands;
+import teamcoffee.routerservice.handlers.interfaces.TrackingCommands;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class TeamLeadMessageSender implements TeamLeadCommands {
+public class TeamLeadMessageSender implements ProfileCommands, DefaultCommands, TrackingCommands, GroupViewCommands {
 
     private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
