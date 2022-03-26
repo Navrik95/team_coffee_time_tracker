@@ -1,5 +1,7 @@
 package teamcoffee.accountant.dto;
 
+import teamcoffee.accountant.entity.Tracking;
+
 import java.util.Objects;
 
 public class TrackingDTO {
@@ -21,6 +23,15 @@ public class TrackingDTO {
         this.note = note;
         this.userChatId = userChatId;
         this.task = task;
+    }
+
+    public TrackingDTO(Tracking tracking){
+        this.id = tracking.getId();
+        this.startTime = tracking.getStartTime();
+        this.endTime = tracking.getEndTime();
+        this.note = tracking.getNote();
+        this.userChatId = tracking.getUserChatId();
+        this.task = new TaskDTO(tracking.getTask());
     }
 
     public int getId() {
