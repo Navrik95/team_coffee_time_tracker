@@ -3,12 +3,14 @@ package teamcoffee.accountant.dao.impl;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
 import teamcoffee.accountant.dao.TaskDao;
 import teamcoffee.accountant.entity.Task;
 import teamcoffee.accountant.util.HibernateSessionFactoryUtil;
 
 import java.util.List;
 
+@Repository
 public class TaskDaoImpl implements TaskDao {
 
     private final SessionFactory sessionFactory = HibernateSessionFactoryUtil.getSessionFactory();
