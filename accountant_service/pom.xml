@@ -51,7 +51,7 @@
                 <version>7.1.1</version>
                 <configuration>
                     <user>postgres</user>
-                    <password>root</password>
+                    <password>admin</password>
                     <url>jdbc:postgresql://localhost:5432/postgres</url>
                     <schemas>service_accountant</schemas>
                 </configuration>
