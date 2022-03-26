@@ -1,14 +1,18 @@
 package teamcoffee.accountant.service;
 
+import teamcoffee.accountant.dto.TaskDTO;
+
+import java.util.List;
+
 public interface TaskService {
 
-    String getAllTasks();
+    List<TaskDTO> getAllTasks();
 
-    String getTaskById(int id);
+    TaskDTO getTaskById(int id);
 
-    void saveNew(String jsonTask);
+    void saveNew(TaskDTO taskDTO);
 
-    void update(String jsonTask);
+    void update(int id, TaskDTO taskDTO);
 
     void delete(int id);
 

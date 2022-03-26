@@ -1,41 +1,48 @@
 package teamcoffee.accountant.service.impl;
 
 import com.google.gson.Gson;
-import teamcoffee.accountant.dao.DaoFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import teamcoffee.accountant.dao.TaskDao;
+import teamcoffee.accountant.dto.TaskDTO;
 import teamcoffee.accountant.entity.Task;
 import teamcoffee.accountant.service.TaskService;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+@Service
 public class TaskServiceImpl implements TaskService {
 
-    private final TaskDao taskDao = DaoFactory.getTaskDao();
-    private final Gson gson = new Gson();
+    @Autowired
+    private TaskDao taskDao;
+    @Autowired
+    private Gson gson;
 
     @Override
-    public String getAllTasks() {
+    public  List<TaskDTO> getAllTasks() {
         List<Task> taskList = taskDao.findAll();
-        String jsonTaskList = gson.toJson(taskList);
-        return jsonTaskList;
+        return taskList.stream()
+                .map(TaskDTO::new)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public String getTaskById(int id) {
+    public TaskDTO getTaskById(int id) {
         Task task = taskDao.findById(id);
-        String jsonTask = gson.toJson(task);
-        return jsonTask;
+        return new TaskDTO(task);
     }
 
     @Override
-    public void saveNew(String jsonTask) {
-        Task task = gson.fromJson(jsonTask, Task.class);
+    public void saveNew(TaskDTO taskDTO) {
+        Task task = new Task(taskDTO.getId(), taskDTO.getName(), taskDTO.getNote());
         taskDao.save(task);
+        taskDTO.setId(task.getId());
     }
 
     @Override
-    public void update(String jsonTask) {
-        Task task = gson.fromJson(jsonTask, Task.class);
+    public void update(int id, TaskDTO taskDTO) {
+        Task task = new Task(id, taskDTO.getName(), taskDTO.getNote());
         taskDao.update(task);
     }
 
