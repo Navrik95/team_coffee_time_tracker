@@ -44,4 +44,20 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>7.1.1</version>
+                <configuration>
+                    <user>postgres</user>
+                    <password>admin</password>
+                    <url>jdbc:postgresql://localhost:5432/postgres</url>
+                    <schemas>service_accountant</schemas>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
