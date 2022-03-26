@@ -22,7 +22,7 @@ public class RequestParser {
         String temp;
         while ((temp = reader.readLine()) != null){
             builder.append(temp.trim());
-            builder.append("\s");
+            builder.append(" ");
         }
         return builder.toString();
     }
