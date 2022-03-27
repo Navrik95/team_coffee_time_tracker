@@ -20,12 +20,12 @@ public class TaskController {
     private TaskService taskService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<TaskDTO> displayAllTasks(){
+    public List<TaskDTO> displayAllTasks() {
         return taskService.getAllTasks();
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public TaskDTO displayTaskById(@PathVariable("id") int id){
+    public TaskDTO displayTaskById(@PathVariable("id") int id) {
 
         return taskService.getTaskById(id);
     }
@@ -35,8 +35,8 @@ public class TaskController {
     public TaskDTO createTask(@RequestBody TaskDTO taskDTO,
                               BindingResult result,
                               HttpServletResponse response)
-                                throws BindException {
-        if (result.hasErrors()){
+            throws BindException {
+        if (result.hasErrors()) {
             throw new BindException(result);
         }
 
@@ -47,14 +47,14 @@ public class TaskController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteTask(@PathVariable("id") int id){
+    public void deleteTask(@PathVariable("id") int id) {
         taskService.delete(id);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void putTask(@PathVariable("id") int id,
-                        @RequestBody TaskDTO taskDTO){
+                        @RequestBody TaskDTO taskDTO) {
         taskService.update(id, taskDTO);
     }
 }
