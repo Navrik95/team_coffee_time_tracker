@@ -3,12 +3,14 @@ package teamcoffee.accountant.dao.impl;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Repository;
 import teamcoffee.accountant.dao.ReportDao;
 import teamcoffee.accountant.entity.Report;
 import teamcoffee.accountant.util.HibernateSessionFactoryUtil;
 
 import java.util.List;
 
+@Repository
 public class ReportDaoImpl implements ReportDao {
 
     private final SessionFactory sessionFactory = HibernateSessionFactoryUtil.getSessionFactory();

@@ -1,9 +1,9 @@
 package teamcoffee.accountant.service.impl;
 
 import com.google.gson.Gson;
-import teamcoffee.accountant.dao.DaoFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import teamcoffee.accountant.dao.ReportDao;
-import teamcoffee.accountant.dao.TrackingDao;
+import teamcoffee.accountant.dao.TrackingSData;
 import teamcoffee.accountant.entity.Report;
 import teamcoffee.accountant.entity.Tracking;
 import teamcoffee.accountant.service.ReportService;
@@ -13,8 +13,10 @@ import java.util.List;
 public class ReportServiceImpl implements ReportService {
 
     private static final long MILLIS_ID_DAY = 86_400_000L;
-    private final TrackingDao trackingDao = DaoFactory.getTrackingDao();
-    private final ReportDao reportDao = DaoFactory.getReportDao();
+    @Autowired
+    private TrackingSData trackingDao;
+    @Autowired
+    private ReportDao reportDao;
     private final Gson gson = new Gson();
 
     @Override
@@ -73,7 +75,7 @@ public class ReportServiceImpl implements ReportService {
         report.setDate(System.currentTimeMillis());
         report.setUserChatId(chatId);
         List<Tracking> trackingsOfTheDay =
-                trackingDao.findByUserChatIdAndTimeInterval(chatId, startInterval, endInterval);
+                trackingDao.findByUserChatIdAndStartTimeAfterAndEndTimeBefore(chatId, startInterval, endInterval);
         report.setDayTrackings(trackingsOfTheDay);
         report.setFullTime(calculateFullTime(report));
         return report;
