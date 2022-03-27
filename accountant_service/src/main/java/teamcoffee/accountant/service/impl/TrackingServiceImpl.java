@@ -1,56 +1,60 @@
 package teamcoffee.accountant.service.impl;
 
-import com.google.gson.Gson;
-import teamcoffee.accountant.dao.DaoFactory;
-import teamcoffee.accountant.dao.TrackingDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import teamcoffee.accountant.dao.TrackingSData;
+import teamcoffee.accountant.entity.builder.TrackingBuilder;
+import teamcoffee.accountant.entity.dto.TrackingDTO;
 import teamcoffee.accountant.entity.Tracking;
 import teamcoffee.accountant.service.TrackingService;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+@Service
 public class TrackingServiceImpl implements TrackingService {
 
-    private final TrackingDao trackingDao = DaoFactory.getTrackingDao();
-    private final Gson gson = new Gson();
+    @Autowired
+    private TrackingSData trackingDao;
+    @Autowired
+    private TrackingBuilder builder;
 
-    @Override
-    public String getById(int id) {
-        Tracking tracking = trackingDao.findById(id);
-        String jsonTracking = gson.toJson(tracking);
-        return jsonTracking;
+    public TrackingDTO getById(int id){
+        Tracking tracking = trackingDao.getById(id);
+        return builder.buildDTO(tracking);
     }
 
-    @Override
-    public String getAll() {
+    public List<TrackingDTO> getByChatId(long userId){
+        List<Tracking> trackingList = trackingDao.findByUserChatId(userId);
+        return trackingList.stream()
+                .map(builder::buildDTO)
+                .collect(Collectors.toList());
+    }
+
+    public List<TrackingDTO> getAll() {
         List<Tracking> trackingList = trackingDao.findAll();
-        String jsonTrackingList = gson.toJson(trackingList);
-        return jsonTrackingList;
+        return trackingList.stream()
+                .map(builder::buildDTO)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public String getByChatId(String jsonChatId) {
+    public List<TrackingDTO> getByChatIdAndDate(long chatId, String date) {
         return null;
     }
 
     @Override
-    public String getByChatIdAndDate(String jsonChatId, String date) {
-        return null;
+    public void saveNew(TrackingDTO trackingDTO) {
+
     }
 
     @Override
-    public void saveNew(String jsonTracking) {
-        Tracking tracking = gson.fromJson(jsonTracking, Tracking.class);
-        trackingDao.save(tracking);
-    }
+    public void update(int id, TrackingDTO trackingDTO) {
 
-    @Override
-    public void update(String jsonTracking) {
-        Tracking tracking = gson.fromJson(jsonTracking, Tracking.class);
-        trackingDao.update(tracking);
     }
 
     @Override
     public void delete(int id) {
-        trackingDao.delete(id);
+
     }
 }

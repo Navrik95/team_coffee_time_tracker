@@ -1,6 +1,6 @@
 package teamcoffee.accountant.service;
 
-import teamcoffee.accountant.dto.TaskDTO;
+import teamcoffee.accountant.entity.dto.TaskDTO;
 
 import java.util.List;
 

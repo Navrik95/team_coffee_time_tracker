@@ -4,7 +4,7 @@ import teamcoffee.accountant.entity.Tracking;
 
 import java.util.List;
 
-public interface TrackingDao {
+public interface TrackingDao{
 
     Tracking findById(int id);
 

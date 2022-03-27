@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import teamcoffee.accountant.dto.TaskDTO;
+import teamcoffee.accountant.entity.dto.TaskDTO;
 import teamcoffee.accountant.service.TaskService;
 
 import javax.servlet.http.HttpServletResponse;
@@ -21,7 +21,6 @@ public class TaskController {
 
     @RequestMapping(method = RequestMethod.GET)
     public List<TaskDTO> displayAllTasks(){
-
         return taskService.getAllTasks();
     }
 

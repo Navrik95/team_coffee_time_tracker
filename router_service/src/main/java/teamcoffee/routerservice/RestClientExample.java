@@ -7,7 +7,7 @@ public class RestClientExample {
     public static void main(String[] args) {
         RestTemplate template = new RestTemplate();
         String taskListUrl = "http://localhost:8191/tasks";
-        String taskUrl = "http://localhost:8191/tasks";
+        String taskUrl = "http://localhost:8191/tasks/1";
 
         System.out.println(template.getForObject(taskListUrl, String.class));
         System.out.println();

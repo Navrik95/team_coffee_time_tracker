@@ -1,4 +1,4 @@
-package teamcoffee.accountant.dto;
+package teamcoffee.accountant.entity.dto;
 
 import teamcoffee.accountant.entity.Tracking;
 
@@ -23,15 +23,6 @@ public class TrackingDTO {
         this.note = note;
         this.userChatId = userChatId;
         this.task = task;
-    }
-
-    public TrackingDTO(Tracking tracking){
-        this.id = tracking.getId();
-        this.startTime = tracking.getStartTime();
-        this.endTime = tracking.getEndTime();
-        this.note = tracking.getNote();
-        this.userChatId = tracking.getUserChatId();
-        this.task = new TaskDTO(tracking.getTask());
     }
 
     public int getId() {

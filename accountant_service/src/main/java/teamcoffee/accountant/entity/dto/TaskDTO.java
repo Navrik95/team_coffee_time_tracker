@@ -1,4 +1,4 @@
-package teamcoffee.accountant.dto;
+package teamcoffee.accountant.entity.dto;
 
 import teamcoffee.accountant.entity.Task;
 
@@ -17,12 +17,6 @@ public class TaskDTO {
         this.id = id;
         this.name = name;
         this.note = note;
-    }
-
-    public TaskDTO(Task task) {
-        this.id = task.getId();
-        this.name = task.getName();
-        this.note = task.getNote();
     }
 
     public int getId() {

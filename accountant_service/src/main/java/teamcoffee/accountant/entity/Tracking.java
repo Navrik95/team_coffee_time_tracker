@@ -18,7 +18,7 @@ public class Tracking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "tr_ id")
+    @Column(name = "tr_id")
     private int id;
 
     @Column(name = "tr_start_time")

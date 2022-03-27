@@ -1,4 +1,4 @@
-package teamcoffee.accountant;
+package teamcoffee.accountant.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -11,6 +11,7 @@ import javax.sql.DataSource;
 @ComponentScan(basePackages = "teamcoffee.accountant")
 @PropertySource("classpath:application.properties")
 public class Config {
+
     private DataSource dataSource;
 
     @Autowired

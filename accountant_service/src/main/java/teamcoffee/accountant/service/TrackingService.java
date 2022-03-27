@@ -1,18 +1,22 @@
 package teamcoffee.accountant.service;
 
+import teamcoffee.accountant.entity.dto.TrackingDTO;
+
+import java.util.List;
+
 public interface TrackingService {
 
-    String getById(int id);
+    TrackingDTO getById(int id);
 
-    String getAll();
+    List<TrackingDTO> getAll();
 
-    String getByChatId(String jsonChatId);
+    List<TrackingDTO> getByChatId(long chatId);
 
-    String getByChatIdAndDate(String jsonChatId, String date);
+    List<TrackingDTO> getByChatIdAndDate(long chatId, String date);
 
-    void saveNew(String jsonTracking);
+    void saveNew(TrackingDTO trackingDTO);
 
-    void update(String jsonTracking);
+    void update(int id, TrackingDTO trackingDTO);
 
     void delete(int id);
 }

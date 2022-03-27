@@ -1,10 +1,7 @@
-package teamcoffee.accountant.dto;
-
-import teamcoffee.accountant.entity.Report;
+package teamcoffee.accountant.entity.dto;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class ReportDTO {
 
@@ -23,18 +20,6 @@ public class ReportDTO {
         this.fullTime = fullTime;
         this.userChatId = userChatId;
         this.dayTrackings = dayTrackings;
-    }
-
-    public ReportDTO(Report report){
-        this.id = report.getId();
-        this.date = report.getDate();
-        this.fullTime = report.getFullTime();
-        this.userChatId = report.getUserChatId();
-        this.dayTrackings = report
-                .getDayTrackings()
-                .stream()
-                .map(TrackingDTO::new)
-                .collect(Collectors.toList());
     }
 
     public int getId() {
