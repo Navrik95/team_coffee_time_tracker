@@ -12,11 +12,11 @@ public interface TrackingService {
 
     List<TrackingDTO> getByChatId(long chatId);
 
-    List<TrackingDTO> getByChatIdAndDate(long chatId, String date);
+    List<TrackingDTO> getByChatIdAndDate(long chatId, long date);
 
     void saveNew(TrackingDTO trackingDTO);
 
     void update(int id, TrackingDTO trackingDTO);
 
-    void delete(int id);
+    void deleteById(int id);
 }

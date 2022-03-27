@@ -36,28 +36,29 @@ public class TrackingController {
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    public void createTracking(@RequestBody TrackingDTO trackingDTO,
+    public TrackingDTO createTracking(@RequestBody TrackingDTO trackingDTO,
                                BindingResult result,
                                HttpServletResponse response)
             throws BindException {
-        if (result.hasErrors()){
+        if (result.hasErrors()) {
             throw new BindException(result);
         }
 
         trackingService.saveNew(trackingDTO);
         response.setHeader("Location", "/trackings/" + trackingDTO.getId());
+        return trackingDTO;
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteTracking(@PathVariable("id") int id){
-        trackingService.delete(id);
+    public void deleteTracking(@PathVariable("id") int id) {
+        trackingService.deleteById(id);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void putTask(@PathVariable("id") int id,
-                        @RequestBody TrackingDTO trackingDTO){
+                        @RequestBody TrackingDTO trackingDTO) {
         trackingService.update(id, trackingDTO);
     }
 
